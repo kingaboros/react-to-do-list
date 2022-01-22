@@ -1,0 +1,25 @@
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../../themes/theme.scss';
+
+.formDiv {
+  display: block;
+  margin: 0 auto;
+  width: 25rem;
+}
+
+.formInputs {
+  font-size: 18px;
+  text-align: left;
+  &::placeholder {
+    color: $placeholderColor;
+  }
+  &:focus-visible {
+    box-shadow: 0 0 4px $boxShadow;
+    transition: 0.3s box-shadow;
+    border-color: $borderColor;
+  }
+  &:hover {
+    box-shadow: 0 0 4px $boxShadow;
+    transition: 0.3s box-shadow;
+  }
+}
