@@ -779,7 +779,6 @@ export const justifyContentXxlCenter: string;
 export const justifyContentXxlEnd: string;
 export const justifyContentXxlEvenly: string;
 export const justifyContentXxlStart: string;
-export const landingPageDiv: string;
 export const lead: string;
 export const lh1: string;
 export const lhBase: string;
