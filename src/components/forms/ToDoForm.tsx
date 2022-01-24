@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
+import { GrUpdate } from 'react-icons/gr';
 
 import strings from '../../themes/strings';
 import styles from './styles.module.scss';
+import iconStyles from '../tasks/styles.module.scss';
 
 const ToDoForm = (props: any) => {
-  const [task, setTask] = useState<string>('');
-
-  const handleChange = (e: any) => {
-    setTask(e.target.value);
-  };
+  const [task, setTask] = useState<any>(props.edit ? props.edit.value : '');
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -18,30 +16,47 @@ const ToDoForm = (props: any) => {
       id: Math.floor(Math.random() * 10000),
       value: task,
     });
+
     setTask('');
   };
 
   return (
-    <div className={styles.formDiv} onSubmit={handleSubmit}>
-      <Row>
-        <Col md={11}>
-          <Form.Control
-            autoComplete={'off'}
-            className={styles.formInputs}
-            type='text'
-            placeholder={strings.addTask}
-            value={task}
-            onChange={handleChange}
-          />
-        </Col>
-        <Col md={1}>
-          <div>
-            <span className={styles.addIcon} onClick={handleSubmit}>
+    <div className={styles.formDiv}>
+      {props.edit ? (
+        <Row>
+          <Col md={11}>
+            <Form.Control
+              className={styles.editInput}
+              type='text'
+              placeholder={strings.updateTask}
+              value={task}
+              onChange={(e) => setTask(e.target.value)}
+            />
+          </Col>
+          <Col md={1}>
+            <button onClick={handleSubmit} className={styles.updateBtn}>
+              <GrUpdate className={iconStyles.updateIcon} />
+            </button>
+          </Col>
+        </Row>
+      ) : (
+        <Row>
+          <Col md={11}>
+            <Form.Control
+              className={styles.formInputs}
+              type='text'
+              placeholder={strings.addTask}
+              value={task}
+              onChange={(e) => setTask(e.target.value)}
+            />
+          </Col>
+          <Col md={1}>
+            <button onClick={handleSubmit} className={styles.addIcon}>
               +
-            </span>
-          </div>
-        </Col>
-      </Row>
+            </button>
+          </Col>
+        </Row>
+      )}
     </div>
   );
 };

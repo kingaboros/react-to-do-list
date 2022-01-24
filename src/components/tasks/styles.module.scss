@@ -3,29 +3,28 @@
 
 .taskList {
   margin: 0 auto;
-  display: flex;
-  width: 740px;
-  position: relative;
+  width: 30rem;
   left: -20px;
   background-color: $taskListBackground;
   padding: 10px, 30px;
-  height: 100%;
+  height: 80vh;
+}
+
+.taskListDiv {
+  width: 40rem;
+  height: 50vh;
+  display: block;
+  margin: 0 auto;
 }
 
 .singleTask {
-  display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 4px auto;
-  color: #fff;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 118, 20, 1) 0%,
-    rgba(255, 84, 17, 1) 100%
-  );
-  padding: 16px;
-  border-radius: 5px;
+  margin: 0 auto;
+  color: black;
+  padding: 10px;
   width: 90%;
+  border-bottom: 2px solid $main;
 }
 
 .taskComplete {
@@ -35,17 +34,31 @@
 }
 
 .icons {
-  display: flex;
-  align-items: center;
+  @extend .d-flex;
   font-size: 24px;
-  cursor: pointer;
+  padding-top: 4px;
 }
 
 .deleteIcon {
-  margin-right: 5px;
-  color: #fff;
+  @extend .justify-content-end;
+  color: $main;
+  font-size: 18px;
+
+  &:hover {
+    color: $fadedMain;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+  }
 }
 
 .editIcon {
-  color: #fff;
+  @extend .deleteIcon;
+  margin-left: 5px;
+}
+
+.updateIcon {
+  @extend .deleteIcon;
+  color: $main !important;
+  font-size: 20px;
+  margin-left: 7px;
 }

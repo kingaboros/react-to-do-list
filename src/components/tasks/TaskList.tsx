@@ -1,24 +1,44 @@
 import React, { useState } from 'react';
 
-import ClearBtn from '../buttons/ClearBtn';
-
-import styles from '../forms/styles.module.scss';
 import ToDoForm from '../forms/ToDoForm';
 import SingleTask from './SingleTask';
 
 const TaskList = () => {
-  const [tasksList, setTasksList] = useState<string[]>([]);
-  const [completeTask, setCompleteTask] = useState<number>(0);
+  const [tasksList, setTasksList] = useState<any>([]);
 
   const addTasks = (tasks: any) => {
-    if (!tasks.text || /^\s*$/.test(tasks.text)) {
+    if (!tasks.value || /^\s*$/.test(tasks.value)) {
+      return;
+    }
+    const newTaskList = [tasks, ...tasksList];
+    setTasksList(newTaskList);
+  };
+
+  const removeTask = (id: any) => {
+    const removeArr = [...tasksList].filter((task: any) => {
+      return task.id !== id;
+    });
+    setTasksList(removeArr);
+  };
+
+  const completeTask = (id: any) => {
+    let updatedTasks = tasksList.map((task: any) => {
+      if (task.id === id) {
+        task.isComplete = !task.isComplete;
+      }
+      return tasksList;
+    });
+    setTasksList(updatedTasks);
+  };
+
+  const updateTask = (taskId: any, newValue: any) => {
+    if (!newValue.value || /^\s*$/.test(newValue.value)) {
       return;
     }
 
-    const newTaskList = [tasks, ...tasksList];
-
-    setTasksList(newTaskList);
-    console.log(...tasksList);
+    setTasksList((prev: any) =>
+      prev.map((item: any) => (item.id === taskId ? newValue : item))
+    );
   };
 
   return (
@@ -30,8 +50,6 @@ const TaskList = () => {
         removeTask={removeTask}
         updateTask={updateTask}
       />
-
-      <ClearBtn />
     </div>
   );
 };
