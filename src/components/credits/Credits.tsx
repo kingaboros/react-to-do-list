@@ -7,6 +7,8 @@ const Credits = () => {
   return (
     <div className={styles.creditsDiv}>
       <p>
+        {' '}
+        👩🏻‍💻
         <a
           className={styles.creditLinks}
           href='https://github.com/kingaboros/react-to-do-list'

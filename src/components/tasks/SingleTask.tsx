@@ -40,7 +40,10 @@ const SingleTask = ({
   return (
     <div className={styles.taskListDiv}>
       {tasksList.map((task: any, index: any) => (
-        <div className={styles.singleTask} key={index}>
+        <div
+          className={task.isComplete ? styles.taskComplete : styles.singleTask}
+          key={index}
+        >
           <Row>
             <Col md={10}>
               <div key={task.id} onClick={() => completeTask(task.id)}>
