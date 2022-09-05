@@ -47,7 +47,7 @@ const SingleTask = ({
           <Row>
             <Col md={10}>
               <div key={task.id} onClick={() => completeTask(task.id)}>
-                {task.value}
+                {task.name}
               </div>
             </Col>
             <Col md={2}>

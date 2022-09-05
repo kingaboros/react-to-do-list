@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { tasks } from '../../data/taskListDb';
 
 import ToDoForm from '../forms/ToDoForm';
 import SingleTask from './SingleTask';
 
 const TaskList = () => {
-  const [tasksList, setTasksList] = useState<any>([]);
+  const [tasksList, setTasksList] = useState<any>(tasks.data);
 
   const addTasks = (tasks: any) => {
     if (!tasks.value || /^\s*$/.test(tasks.value)) {
