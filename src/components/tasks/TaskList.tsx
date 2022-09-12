@@ -14,14 +14,14 @@ const TaskList = () => {
     setTasksList(newTaskList);
   };
 
-  const removeTask = (id: any) => {
+  const removeTask = (id: number) => {
     const removeArr = [...tasksList].filter((task: any) => {
       return task.id !== id;
     });
     setTasksList(removeArr);
   };
 
-  const completeTask = (id: any) => {
+  const completeTask = (id: number) => {
     let updatedTasks = tasksList.map((task: any) => {
       if (task.id === id) {
         task.isComplete = !task.isComplete;

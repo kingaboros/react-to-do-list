@@ -6,10 +6,15 @@ import strings from '../../themes/strings';
 import styles from './styles.module.scss';
 import iconStyles from '../tasks/styles.module.scss';
 
-const ToDoForm = (props: any) => {
-  const [task, setTask] = useState<any>(props.edit ? props.edit.value : '');
+interface IProps {
+  onSubmit: any;
+  edit?: any;
+}
 
-  const handleSubmit = (e: any) => {
+const ToDoForm = (props: IProps) => {
+  const [task, setTask] = useState(props.edit ? props.edit.value : '');
+
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
 
     props.onSubmit({
@@ -27,7 +32,7 @@ const ToDoForm = (props: any) => {
           <Col md={11}>
             <Form.Control
               className={styles.editInput}
-              type='text'
+              type="text"
               placeholder={strings.updateTask}
               value={task}
               onChange={(e) => setTask(e.target.value)}
@@ -44,7 +49,7 @@ const ToDoForm = (props: any) => {
           <Col md={11}>
             <Form.Control
               className={styles.formInputs}
-              type='text'
+              type="text"
               placeholder={strings.addTask}
               value={task}
               onChange={(e) => setTask(e.target.value)}

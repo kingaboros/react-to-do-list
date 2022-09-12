@@ -8,7 +8,7 @@ import ToDoForm from '../forms/ToDoForm';
 import styles from './styles.module.scss';
 
 interface iProps {
-  tasksList: string[];
+  tasksList: [id: number, value: string];
   completeTask: (arg1: number) => void;
   removeTask: (arg1: number) => void;
   updateTask: (arg1: null | number, arg2: string) => void;
@@ -19,7 +19,7 @@ const SingleTask = ({
   completeTask,
   removeTask,
   updateTask,
-}: any) => {
+}: iProps) => {
   const [edit, setEdit] = useState({
     id: null,
     value: '',
@@ -39,7 +39,7 @@ const SingleTask = ({
 
   return (
     <div className={styles.taskListDiv}>
-      {tasksList.map((task: any, index: any) => (
+      {tasksList.map((task: any, index: number) => (
         <div className={styles.singleTask} key={index}>
           <Row>
             <Col md={10}>
